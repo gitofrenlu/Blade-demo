@@ -13,24 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.feign;
 
-
-import org.springblade.auth.entity.UserInfo;
+import org.springblade.auth.entity.Dept;
+import org.springblade.auth.entity.Role;
+import org.springframework.stereotype.Component;
 
 /**
- * 授权认证统一接口.
+ * Feign失败配置
  *
  * @author Chill
  */
-public interface ITokenGranter {
+@Component
+public class ISysClientFallback implements ISysClient {
+	@Override
+	public String getDeptName(Integer id) {
+		return null;
+	}
 
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+	@Override
+	public Dept getDept(Integer id) {
+		return null;
+	}
 
+	@Override
+	public String getRoleName(Integer id) {
+		return null;
+	}
+
+	@Override
+	public String getRoleAlias(Integer id) {
+		return null;
+	}
+
+	@Override
+	public Role getRole(Integer id) {
+		return null;
+	}
 }

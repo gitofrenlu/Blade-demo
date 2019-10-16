@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.dto;
 
+import lombok.Data;
 
-import org.springblade.auth.entity.UserInfo;
+import java.io.Serializable;
 
 /**
- * 授权认证统一接口.
+ * 数据传输对象实体类
  *
  * @author Chill
  */
-public interface ITokenGranter {
-
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
-
+@Data
+public class MenuDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private String alias;
+	private String path;
 }

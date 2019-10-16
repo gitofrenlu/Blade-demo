@@ -13,24 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-import org.springblade.auth.entity.UserInfo;
+import java.io.Serializable;
+import java.util.List;
 
 /**
- * 授权认证统一接口.
+ * 用户信息
  *
  * @author Chill
  */
-public interface ITokenGranter {
+@Data
+@ApiModel(description = "用户信息")
+public class UserInfo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
+	 * 用户基础信息
 	 */
-	UserInfo grant(TokenParameter tokenParameter);
+	@ApiModelProperty(value = "用户")
+	private User user;
+
+	/**
+	 * 权限标识集合
+	 */
+	@ApiModelProperty(value = "权限集合")
+	private List<String> permissions;
+
+	/**
+	 * 角色集合
+	 */
+	@ApiModelProperty(value = "角色集合")
+	private List<String> roles;
 
 }

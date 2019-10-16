@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.service.impl;
 
-
-import org.springblade.auth.entity.UserInfo;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.auth.entity.RoleMenu;
+import org.springblade.auth.mapper.RoleMenuMapper;
+import org.springblade.auth.service.IRoleMenuService;
+import org.springframework.stereotype.Service;
 
 /**
- * 授权认证统一接口.
+ * 服务实现类
  *
  * @author Chill
  */
-public interface ITokenGranter {
-
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+@Service
+public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> implements IRoleMenuService {
 
 }

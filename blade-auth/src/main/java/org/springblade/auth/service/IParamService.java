@@ -13,24 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.service;
 
-
-import org.springblade.auth.entity.UserInfo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springblade.auth.entity.Param;
+import org.springblade.core.mp.base.BaseService;
+import org.springblade.auth.vo.ParamVO;
 
 /**
- * 授权认证统一接口.
+ * 服务类
  *
  * @author Chill
  */
-public interface ITokenGranter {
+public interface IParamService extends BaseService<Param> {
 
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
+	/***
+	 * 自定义分页
+	 * @param page
+	 * @param param
+	 * @return
 	 */
-	UserInfo grant(TokenParameter tokenParameter);
+	IPage<ParamVO> selectParamPage(IPage<ParamVO> page, ParamVO param);
 
 }

@@ -13,24 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.service;
 
-
-import org.springblade.auth.entity.UserInfo;
+import org.springblade.auth.entity.AuthClient;
+import org.springblade.core.mp.base.BaseService;
 
 /**
- * 授权认证统一接口.
+ *  服务类
  *
  * @author Chill
  */
-public interface ITokenGranter {
-
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+public interface IAuthClientService extends BaseService<AuthClient> {
 
 }

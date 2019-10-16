@@ -16,12 +16,13 @@
 package org.springblade.auth.granter;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springblade.auth.enums.BladeUserEnum;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.DigestUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.system.user.entity.UserInfo;
-import org.springblade.system.user.feign.IUserClient;
+import org.springblade.auth.entity.UserInfo;
+import org.springblade.auth.feign.IUserClient;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,9 +32,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @AllArgsConstructor
+@Slf4j
 public class PasswordTokenGranter implements ITokenGranter {
 
 	public static final String GRANT_TYPE = "password";
+
 
 	private IUserClient userClient;
 
@@ -46,6 +49,7 @@ public class PasswordTokenGranter implements ITokenGranter {
 		if (Func.isNoneBlank(account, password)) {
 			// 获取用户类型
 			String userType = tokenParameter.getArgs().getStr("userType");
+			log.error("userType : "+ userType);
 			R<UserInfo> result;
 			// 根据不同用户类型调用对应的接口返回数据，用户可自行拓展
 			if (userType.equals(BladeUserEnum.WEB.getName())) {

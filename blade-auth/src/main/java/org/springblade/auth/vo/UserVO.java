@@ -13,24 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.vo;
 
-
-import org.springblade.auth.entity.UserInfo;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springblade.auth.entity.User;
 
 /**
- * 授权认证统一接口.
+ * 视图实体类
  *
  * @author Chill
  */
-public interface ITokenGranter {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ApiModel(value = "UserVO对象", description = "UserVO对象")
+public class UserVO extends User {
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
+	 * 主键ID
 	 */
-	UserInfo grant(TokenParameter tokenParameter);
+	private Integer id;
 
+	/**
+	 * 角色名
+	 */
+	private String roleName;
+
+	/**
+	 * 部门名
+	 */
+	private String deptName;
+
+	/**
+	 * 性别
+	 */
+	private String sexName;
 }

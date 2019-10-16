@@ -20,8 +20,8 @@ import org.springblade.core.secure.AuthInfo;
 import org.springblade.core.secure.TokenInfo;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.system.user.entity.User;
-import org.springblade.system.user.entity.UserInfo;
+import org.springblade.auth.entity.User;
+import org.springblade.auth.entity.UserInfo;
 
 import java.util.HashMap;
 import java.util.Map;

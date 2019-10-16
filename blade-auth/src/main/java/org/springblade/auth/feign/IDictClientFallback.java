@@ -13,24 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.feign;
 
+import org.springblade.auth.entity.Dict;
+import org.springblade.core.tool.api.R;
+import org.springframework.stereotype.Component;
 
-import org.springblade.auth.entity.UserInfo;
+import java.util.List;
+
 
 /**
- * 授权认证统一接口.
+ * Feign失败配置
  *
  * @author Chill
  */
-public interface ITokenGranter {
+@Component
+public class IDictClientFallback implements IDictClient {
+	@Override
+	public R<String> getValue(String code, Integer dictKey) {
+		return R.fail("获取数据失败");
+	}
 
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
-
+	@Override
+	public R<List<Dict>> getList(String code) {
+		return R.fail("获取数据失败");
+	}
 }

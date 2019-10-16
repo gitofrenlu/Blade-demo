@@ -19,6 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springblade.auth.granter.ITokenGranter;
 import org.springblade.auth.granter.TokenGranterBuilder;
 import org.springblade.auth.granter.TokenParameter;
@@ -27,7 +28,7 @@ import org.springblade.core.secure.AuthInfo;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.WebUtil;
-import org.springblade.system.user.entity.UserInfo;
+import org.springblade.auth.entity.UserInfo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @Api(value = "用户授权认证", tags = "授权接口")
+@Slf4j
 public class AuthController {
 
 	@PostMapping("token")
@@ -56,6 +58,9 @@ public class AuthController {
 		tokenParameter.getArgs().set("tenantId", tenantId).set("account", account).set("password", password).set("grantType", grantType).set("refreshToken", refreshToken).set("userType", userType);
 
 		ITokenGranter granter = TokenGranterBuilder.getGranter(grantType);
+
+		log.error(tokenParameter.toString());
+
 		UserInfo userInfo = granter.grant(tokenParameter);
 
 		if (userInfo == null || userInfo.getUser() == null || userInfo.getUser().getId() == null) {

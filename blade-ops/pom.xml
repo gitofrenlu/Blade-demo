@@ -12,9 +12,7 @@
     <artifactId>blade-ops</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>blade-admin</module>
         <module>blade-develop</module>
-        <module>blade-resource</module>
     </modules>
 
 </project>

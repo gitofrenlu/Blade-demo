@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.dto;
 
-
-import org.springblade.auth.entity.UserInfo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springblade.auth.entity.Role;
 
 /**
- * 授权认证统一接口.
+ * 数据传输对象实体类
  *
  * @author Chill
  */
-public interface ITokenGranter {
-
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class RoleDTO extends Role {
+	private static final long serialVersionUID = 1L;
 
 }

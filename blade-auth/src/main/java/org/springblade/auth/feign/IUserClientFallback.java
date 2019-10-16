@@ -13,24 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
-
+package org.springblade.auth.feign;
 
 import org.springblade.auth.entity.UserInfo;
+import org.springblade.core.tool.api.R;
+import org.springframework.stereotype.Component;
 
 /**
- * 授权认证统一接口.
+ * Feign失败配置
  *
  * @author Chill
  */
-public interface ITokenGranter {
+@Component
+public class IUserClientFallback implements IUserClient {
 
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+	@Override
+	public R<UserInfo> userInfo(Long userId) {
+		return R.fail("未获取到账号信息");
+	}
 
+	@Override
+	public R<UserInfo> userInfo(String tenantId, String account, String password) {
+		return R.fail("未获取到账号信息");
+	}
 }

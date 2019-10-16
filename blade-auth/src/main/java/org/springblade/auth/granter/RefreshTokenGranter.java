@@ -21,8 +21,8 @@ import org.springblade.core.launch.constant.TokenConstant;
 import org.springblade.core.secure.utils.SecureUtil;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
-import org.springblade.system.user.entity.UserInfo;
-import org.springblade.system.user.feign.IUserClient;
+import org.springblade.auth.entity.UserInfo;
+import org.springblade.auth.feign.IUserClient;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;

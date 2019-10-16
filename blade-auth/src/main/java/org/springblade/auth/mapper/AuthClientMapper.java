@@ -13,24 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.auth.granter;
+package org.springblade.auth.mapper;
 
-
-import org.springblade.auth.entity.UserInfo;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.springblade.auth.entity.AuthClient;
 
 /**
- * 授权认证统一接口.
+ * Mapper 接口
  *
  * @author Chill
  */
-public interface ITokenGranter {
-
-	/**
-	 * 获取用户信息
-	 *
-	 * @param tokenParameter 授权参数
-	 * @return UserInfo
-	 */
-	UserInfo grant(TokenParameter tokenParameter);
+public interface AuthClientMapper extends BaseMapper<AuthClient> {
 
 }
